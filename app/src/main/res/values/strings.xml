@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">QuizApp</string>
+    <string name="quiz">Quiz</string>
+    <string name="questions_amount">Questions amount:</string>
+    <string name="ques_amount_example">10</string>
+    <string name="category">Category</string>
+    <string name="difficulty">Difficulty</string>
+    <string name="start">Start</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+
+    <string-array name="spinner_category_example">
+        <item>All</item>
+        <item>Easy</item>
+        <item>Medium</item>
+        <item>Hard</item>
+    </string-array>
+</resources>

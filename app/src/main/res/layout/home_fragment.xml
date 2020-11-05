@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+
+    <TextView
+        android:id="@+id/quiz_tv"
+        style="@style/fragment_name_ts"
+        android:text="@string/quiz"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="89dp"
+        android:src="@drawable/ic_figure_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/questions_amount_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="203dp"
+        android:text="@string/questions_amount"
+        app:layout_constraintStart_toStartOf="@id/category_spinner"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_plus"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="@string/plus"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="@id/questions_amount"
+        app:layout_constraintStart_toEndOf="@id/questions_amount_tv"
+        app:layout_constraintTop_toTopOf="@id/questions_amount_tv" />
+
+    <TextView
+        android:id="@+id/questions_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ques_amount_example"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@id/btn_plus"
+        app:layout_constraintTop_toTopOf="@id/questions_amount_tv" />
+
+    <Button
+        android:id="@+id/btn_minus"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="@string/minus"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="@id/questions_amount"
+        app:layout_constraintStart_toEndOf="@id/questions_amount"
+        app:layout_constraintTop_toTopOf="@id/questions_amount_tv" />
+
+    <SeekBar
+        android:id="@+id/seek_bar"
+        android:layout_width="260dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="6dp"
+        android:max="20"
+        android:progress="10"
+        android:progressTint="#BE52F2"
+        android:thumbTint="#BE52F2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questions_amount_tv" />
+
+    <TextView
+        android:id="@+id/text_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="@string/category"
+        android:textColor="#A9A9A9"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/category_spinner"
+        app:layout_constraintTop_toBottomOf="@id/seek_bar" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/category_spinner"
+        android:layout_width="240dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_category">
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:entries="@array/spinner_category_example" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/text_difficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/difficulty"
+        android:textColor="#A9A9A9"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/category_spinner"
+        app:layout_constraintTop_toBottomOf="@id/category_spinner" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="240dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="6dp"
+        app:layout_constraintStart_toStartOf="@id/category_spinner"
+        app:layout_constraintTop_toBottomOf="@id/text_difficulty">
+
+        <Spinner
+            android:id="@+id/difficulty_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:entries="@array/spinner_category_example" />
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="120dp"
+        android:text="@string/start"
+        android:backgroundTint="#6979F8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
