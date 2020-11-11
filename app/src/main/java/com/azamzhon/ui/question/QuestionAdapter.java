@@ -60,10 +60,6 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
 
 
         public void onBind(QuestionModel questionModel) {
-            demonstration(questionModel);
-        }
-
-        private void demonstration(QuestionModel questionModel) {
             binding.setQuestion(questionModel);
         }
     }
