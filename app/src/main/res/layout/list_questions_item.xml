@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="question"
+            type="com.azamzhon.data.models.QuestionModel" />
+
+        <variable
+            name="listener"
+            type="com.azamzhon.ui.question.OnVarClickListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/questions"
+            android:layout_width="220dp"
+            android:layout_height="100dp"
+            android:text="@{question.question}"
+            android:textAlignment="center"
+            android:textIsSelectable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/const_layout_1"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:visibility="@{question.allAnswers.length == 4 ? View.VISIBLE: View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/questions">
+
+            <Button
+                android:id="@+id/btn_1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_rectangle"
+                android:gravity="center"
+                android:text="@{question.allAnswers[0]}"
+                android:onClick="@{()-> listener.onClick(0)}"
+                android:textColor="#6979F8"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btn_2"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/ic_rectangle"
+                android:gravity="center"
+                android:onClick="@{()-> listener.onClick(1)}"
+                android:text="@{question.allAnswers[1]}"
+                android:textColor="#6979F8"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/btn_1" />
+
+            <Button
+                android:id="@+id/btn_3"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/ic_rectangle"
+                android:gravity="center"
+                android:onClick="@{()-> listener.onClick(2)}"
+                android:text="@{question.allAnswers[2]}"
+                android:textColor="#6979F8"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/btn_2" />
+
+            <Button
+                android:id="@+id/btn_4"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/ic_rectangle"
+                android:gravity="center"
+                android:text="@{question.allAnswers[3]}"
+                android:onClick="@{()-> listener.onClick(3)}"
+                android:textColor="#6979F8"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/btn_3" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/const_layout_2"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:visibility="@{question.allAnswers.length == 2 ? View.VISIBLE: View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/const_layout_1">
+
+            <Button
+                android:id="@+id/btn_5"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/ic_rectangle"
+                android:gravity="center"
+                android:text="@{question.allAnswers[0]}"
+                android:onClick="@{()-> listener.onClick(0)}"
+                android:textColor="#6979F8"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btn_6"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="34dp"
+                android:background="@drawable/ic_rectangle"
+                android:gravity="center"
+                android:text="@{question.allAnswers[1]}"
+                android:onClick="@{()-> listener.onClick(1)}"
+                android:textColor="#6979F8"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/btn_5" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,5 +1,6 @@
 package com.azamzhon.ui.main;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +15,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,17 +22,18 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private List<Fragment> fragmentList;
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        fragmentList = new ArrayList<>();
+        initialize();
         fillFragment();
 
-        bottomNavigationView = findViewById(R.id.main_bottom_nav);
-        viewPager = findViewById(R.id.main_view_pager);
+        setupListeners();
+    }
 
+    private void setupListeners() {
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.home_nav:
@@ -55,6 +56,12 @@ public class MainActivity extends AppCompatActivity {
                 bottomNavigationView.getMenu().getItem(position).setChecked(true);
             }
         });
+    }
+
+    public void initialize() {
+        bottomNavigationView = findViewById(R.id.main_bottom_nav);
+        viewPager = findViewById(R.id.main_view_pager);
+        fragmentList = new ArrayList<>();
     }
 
     private void fillFragment() {

@@ -1,11 +1,11 @@
 package com.azamzhon.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
@@ -15,12 +15,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.azamzhon.R;
+import com.azamzhon.ui.question.QuestionActivity;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel mViewModel;
     private TextView number;
-    private Button plus, minus;
+    private Button btnPlus, btnMinus, btnStart;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -44,16 +45,17 @@ public class HomeFragment extends Fragment {
         mViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
         number = view.findViewById(R.id.questions_amount);
-        plus = view.findViewById(R.id.btn_plus);
-        minus = view.findViewById(R.id.btn_minus);
+        btnPlus = view.findViewById(R.id.btn_plus);
+        btnMinus = view.findViewById(R.id.btn_minus);
+        btnStart = view.findViewById(R.id.btn_start);
     }
 
     private void setupListeners() {
-        plus.setOnClickListener(view -> {
-            mViewModel.increase();
-        });
-        minus.setOnClickListener(view -> {
-            mViewModel.decrease();
+        btnPlus.setOnClickListener(view -> mViewModel.increase());
+        btnMinus.setOnClickListener(view -> mViewModel.decrease());
+        btnStart.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(), QuestionActivity.class);
+            startActivity(intent);
         });
     }
 
