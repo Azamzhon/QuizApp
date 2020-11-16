@@ -4,6 +4,12 @@
 
     <data>
 
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.azamzhon.ui.main.home.HomeViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -11,8 +17,20 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
+        android:background="@android:color/white"
         android:layout_height="match_parent"
-        tools:context=".ui.home.HomeFragment">
+        tools:context=".ui.main.home.HomeFragment">
+
+        <ProgressBar
+            android:id="@+id/_quiz_fr_progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}"
+            android:progressTint="#BE52F2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/quiz_tv"
@@ -75,7 +93,7 @@
             app:layout_constraintTop_toTopOf="@id/questions_amount_tv" />
 
         <SeekBar
-            android:id="@+id/seek_bar"
+            android:id="@+id/home_seekBar"
             android:layout_width="260dp"
             android:layout_height="47dp"
             android:layout_marginTop="6dp"
@@ -96,7 +114,7 @@
             android:textColor="#A9A9A9"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="@id/category_spinner"
-            app:layout_constraintTop_toBottomOf="@id/seek_bar" />
+            app:layout_constraintTop_toBottomOf="@id/home_seekBar" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/category_spinner"
@@ -109,6 +127,7 @@
             app:layout_constraintTop_toBottomOf="@id/text_category">
 
             <Spinner
+                android:id="@+id/spinner_1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:entries="@array/spinner_category_example" />
@@ -127,6 +146,7 @@
             app:layout_constraintTop_toBottomOf="@id/category_spinner" />
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
             android:layout_width="240dp"
             android:layout_height="48dp"
             android:layout_marginTop="10dp"
@@ -135,7 +155,7 @@
             app:layout_constraintTop_toBottomOf="@id/text_difficulty">
 
             <Spinner
-                android:id="@+id/difficulty_spinner"
+                android:id="@+id/spinner_2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:entries="@array/spinner_category_example" />
@@ -149,6 +169,7 @@
             android:layout_marginBottom="120dp"
             android:backgroundTint="#6979F8"
             android:text="@string/start"
+            android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

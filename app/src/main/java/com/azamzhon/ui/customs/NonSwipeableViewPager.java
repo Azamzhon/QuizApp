@@ -1,4 +1,4 @@
-package com.azamzhon.ui.main;
+package com.azamzhon.ui.customs;
 
 import android.content.Context;
 import android.util.AttributeSet;

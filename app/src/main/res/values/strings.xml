@@ -14,6 +14,9 @@
     <string name="question_type_title">Football</string>
     <string name="questions_answers_amount">5/10</string>
     <string name="skip">Skip</string>
+    <string name="version">v 1.0.0</string>
+    <string name="settings_title">Settings</string>
+    <string name="result">Result</string>
 
     <string-array name="spinner_category_example">
         <item>All</item>

@@ -4,8 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@android:color/white"
     android:layout_height="match_parent"
-    tools:context=".ui.history.HistoryFragment">
+    tools:context=".ui.main.history.HistoryFragment">
 
     <TextView
         android:id="@+id/history_tv"
@@ -19,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
+        tools:itemCount="3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@+id/history_tv"

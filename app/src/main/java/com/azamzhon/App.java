@@ -2,25 +2,22 @@ package com.azamzhon;
 
 import android.app.Application;
 
-import com.azamzhon.data.local.Prefs;
+import com.azamzhon.data.local.IHistoryStorage;
+import com.azamzhon.data.local.QuizRepository;
+import com.azamzhon.data.network.QuizApiClient;
+import com.azamzhon.ui.main.history.HistoryStorage;
 
 public class App extends Application {
 
-    private Prefs preferences;
-    private static App instance;
+    public static QuizApiClient apiClient;
+    public static QuizRepository quizRepository;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        instance = this;
-        preferences = new Prefs(this);
-    }
+        apiClient = new QuizApiClient();
+        IHistoryStorage historyStorage = new HistoryStorage();
 
-    public static App getInstance() {
-        return instance;
-    }
-
-    public Prefs getPreferences() {
-        return preferences;
+        quizRepository = new QuizRepository(apiClient ,historyStorage);
     }
 }

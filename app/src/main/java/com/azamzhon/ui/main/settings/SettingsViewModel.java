@@ -1,4 +1,4 @@
-package com.azamzhon.ui.settings;
+package com.azamzhon.ui.main.settings;
 
 import androidx.lifecycle.ViewModel;
 

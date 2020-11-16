@@ -1,66 +1,95 @@
 package com.azamzhon.ui.question;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.azamzhon.R;
 import com.azamzhon.data.models.QuestionModel;
 import com.azamzhon.databinding.ListQuestionsItemBinding;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.QuestionHolder> {
 
-    private OnAnswerClickListener listener;
-    private List<QuestionModel> data = new ArrayList<>();
+    ArrayList<QuestionModel> questions = new ArrayList<>();
+    OnAnswerClickListener listener;
 
-    public void setData(List<QuestionModel> data) {
-        this.data = data;
-        notifyDataSetChanged();
-    }
-
-    public void setAnswerClickListener(OnAnswerClickListener listener) {
+    public void setListener(OnAnswerClickListener listener) {
         this.listener = listener;
     }
 
     @NonNull
     @Override
     public QuestionHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new QuestionHolder(ListQuestionsItemBinding.bind(LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_questions_item, parent, false)));
+        ListQuestionsItemBinding binding = ListQuestionsItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new QuestionHolder(binding.getRoot());
     }
 
     @Override
     public void onBindViewHolder(@NonNull QuestionHolder holder, int position) {
-        holder.onBind(data.get(position));
+        QuestionModel question = questions.get(position);
+        holder.itemBinding.setListener(listener);
+        holder.itemBinding.setQuestion(question);
+        if (question.getType().equals("multiple")){
+            if (question.isClicked()){
+                holder.itemBinding.btn1.setClickable(false);
+                holder.itemBinding.btn2.setClickable(false);
+                holder.itemBinding.btn3.setClickable(false);
+                holder.itemBinding.btn4.setClickable(false);
+            }
+            holder.itemBinding.btn1.setText(question.getIncorrectAnswers().get(0).toString());
+            holder.itemBinding.btn2.setText(question.getIncorrectAnswers().get(1).toString());
+            holder.itemBinding.btn3.setText(question.getIncorrectAnswers().get(2).toString());
+            holder.itemBinding.btn4.setText(question.getIncorrectAnswers().get(3).toString());
+        }else {
+            if (question.isClicked()){
+                holder.itemBinding.btn5.setClickable(false);
+                holder.itemBinding.btn6.setClickable(false);
+            }
+            holder.itemBinding.btn5.setText(question.getIncorrectAnswers().get(0).toString());
+            holder.itemBinding.btn6.setText(question.getIncorrectAnswers().get(1).toString());
+        }
+    }
+
+    public void setQuestions(ArrayList<QuestionModel> questions) {
+        this.questions = questions;
+        notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return questions.size();
     }
 
     public class QuestionHolder extends RecyclerView.ViewHolder {
-        ListQuestionsItemBinding binding;
 
-        public QuestionHolder(@NonNull ListQuestionsItemBinding binding) {
-            super(binding.getRoot());
-            this.binding = binding;
-            initListener();
-        }
+        ListQuestionsItemBinding itemBinding;
 
-        private void initListener() {
-            binding.setListener(pos -> listener.OnAnswerClick (data.get(getAdapterPosition()).getAllAnswers()[pos].equals(data.get(getAdapterPosition()).getCorrectAnswer())));
-        }
-
-
-        public void onBind(QuestionModel questionModel) {
-            binding.setQuestion(questionModel);
+        public QuestionHolder(@NonNull View view) {
+            super(view);
+            itemBinding = DataBindingUtil.bind(view);
+            itemBinding.btn1.setOnClickListener(v -> {
+                listener.onClick(getAdapterPosition(),0);
+            });
+            itemBinding.btn2.setOnClickListener(v -> {
+                listener.onClick(getAdapterPosition(),1);
+            });
+            itemBinding.btn3.setOnClickListener(v -> {
+                listener.onClick(getAdapterPosition(),2);
+            });
+            itemBinding.btn4.setOnClickListener(v -> {
+                listener.onClick(getAdapterPosition(),3);
+            });
+            itemBinding.btn5.setOnClickListener(v -> {
+                listener.onClick(getAdapterPosition(),0);
+            });
+            itemBinding.btn6.setOnClickListener(v -> {
+                listener.onClick(getAdapterPosition(),1);
+            });
         }
     }
 }

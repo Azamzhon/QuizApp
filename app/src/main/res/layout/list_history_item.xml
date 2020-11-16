@@ -7,7 +7,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/history_item_card_view"
-        android:layout_width="340dp"
+        android:layout_width="370dp"
         android:layout_height="100dp"
         app:cardCornerRadius="6dp"
         app:cardElevation="20dp"
@@ -19,7 +19,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="8dp">
+            android:layout_margin="12dp">
 
             <TextView
                 android:id="@+id/category_tv"
@@ -45,7 +45,7 @@
 
             <View
                 android:layout_width="30dp"
-                android:layout_height="24dp"
+                android:layout_height="22dp"
                 android:background="@drawable/ic_triple_dots"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

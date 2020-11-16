@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.azamzhon.R;
-import com.azamzhon.ui.history.HistoryFragment;
-import com.azamzhon.ui.home.HomeFragment;
-import com.azamzhon.ui.settings.SettingsFragment;
+import com.azamzhon.ui.main.history.HistoryFragment;
+import com.azamzhon.ui.main.home.HomeFragment;
+import com.azamzhon.ui.main.settings.SettingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;

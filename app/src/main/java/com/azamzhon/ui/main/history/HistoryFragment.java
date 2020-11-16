@@ -1,4 +1,4 @@
-package com.azamzhon.ui.history;
+package com.azamzhon.ui.main.history;
 
 import androidx.lifecycle.ViewModelProvider;
 
