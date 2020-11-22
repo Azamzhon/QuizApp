@@ -13,9 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuizApp">
         <activity android:name=".ui.result.ResultActivity"/>
-        <activity android:name=".ui.splash.SplashScreenActivity" />
+        <activity android:name=".ui.main.MainActivity"/>
         <activity android:name=".ui.question.QuestionActivity" />
-        <activity android:name=".ui.main.MainActivity">
+        <activity android:name=".ui.splash.SplashScreenActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

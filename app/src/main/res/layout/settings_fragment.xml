@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
     tools:context=".ui.main.settings.SettingsFragment">
 
     <TextView
@@ -26,24 +25,17 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_marginTop="34dp"
-        android:background="@android:color/white"
         app:layout_constraintTop_toBottomOf="@id/settings_tv">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="23dp"
-            android:text="Share this app"
-            android:textColor="#333333"
+            style="@style/settings_tvs_style"
+            android:text="@string/share_this_app"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <View
-            android:layout_width="10dp"
-            android:layout_height="18dp"
-            android:layout_marginEnd="22dp"
-            android:background="@drawable/ic_stroke"
+            style="@style/stroke_style"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -60,24 +52,17 @@
         android:id="@+id/layout_2"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="@android:color/white"
         app:layout_constraintTop_toBottomOf="@id/layout_1">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="23dp"
-            android:textColor="#333333"
-            android:text="Rate us"
+            style="@style/settings_tvs_style"
+            android:text="@string/rate_us"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
-            android:layout_width="10dp"
-            android:layout_height="18dp"
-            android:layout_marginEnd="22dp"
-            android:background="@drawable/ic_stroke"
+            style="@style/stroke_style"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -94,24 +79,17 @@
         android:id="@+id/layout_3"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="@android:color/white"
         app:layout_constraintTop_toBottomOf="@id/layout_2">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="23dp"
-            android:text="Leave feedback"
-            android:textColor="#333333"
+            style="@style/settings_tvs_style"
+            android:text="@string/leave_feedback"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
-            android:layout_width="10dp"
-            android:layout_height="18dp"
-            android:layout_marginEnd="22dp"
-            android:background="@drawable/ic_stroke"
+            style="@style/stroke_style"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -128,24 +106,18 @@
         android:id="@+id/layout_4"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="@android:color/white"
         app:layout_constraintTop_toBottomOf="@id/layout_3">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="23dp"
-            android:text="Clear history"
+            style="@style/settings_tvs_style"
             android:textColor="#BE52F2"
+            android:text="@string/clear_history"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
-            android:layout_width="10dp"
-            android:layout_height="18dp"
-            android:layout_marginEnd="22dp"
-            android:background="@drawable/ic_stroke"
+            style="@style/stroke_style"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

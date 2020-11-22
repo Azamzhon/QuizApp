@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="120dp">
 
@@ -23,23 +24,15 @@
 
             <TextView
                 android:id="@+id/category_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/history_category"
-                android:textColor="@android:color/black"
-                android:textSize="17sp"
-                android:textStyle="bold"
+                style="@style/category_style"
+                android:text="@string/_category"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/category_var"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/category_style"
                 android:text="@string/mixed"
-                android:textColor="@android:color/black"
-                android:textSize="17sp"
-                android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@id/category_tv"
                 app:layout_constraintTop_toTopOf="@id/category_tv" />
 
@@ -52,39 +45,31 @@
 
             <TextView
                 android:id="@+id/correct_answers_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/parameters_style"
                 android:layout_marginTop="10dp"
-                android:text="Correct answers:"
-                android:textSize="12sp"
+                android:text="@string/correct_answers"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/category_tv" />
 
             <TextView
                 android:id="@+id/correct_answers_var"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="8/10"
-                android:textSize="12sp"
+                style="@style/parameters_style"
+                android:text="@string/_8_10"
                 app:layout_constraintStart_toEndOf="@id/correct_answers_tv"
                 app:layout_constraintTop_toTopOf="@id/correct_answers_tv" />
 
             <TextView
                 android:id="@+id/difficulty_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/parameters_style"
                 android:layout_marginTop="10dp"
-                android:text="Difficulty:"
-                android:textSize="12sp"
+                android:text="@string/_difficulty"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/correct_answers_tv" />
 
             <TextView
                 android:id="@+id/difficulty_var"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="All"
-                android:textSize="12sp"
+                style="@style/parameters_style"
+                android:text="@string/all"
                 app:layout_constraintStart_toEndOf="@id/difficulty_tv"
                 app:layout_constraintTop_toTopOf="@id/difficulty_tv" />
 
@@ -93,10 +78,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
-                android:text="12 may 2019 20:32"
                 android:textSize="9sp"
+                android:text="@string/the_date"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="SmallSp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

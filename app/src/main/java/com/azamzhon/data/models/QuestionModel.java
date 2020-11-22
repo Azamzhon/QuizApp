@@ -31,9 +31,8 @@ public class QuestionModel {
     @Expose
     private ArrayList<String> incorrectAnswers;
 
-    private int selectQuestionPosition;
-
-    private boolean isClicked;
+    private int selectQuestionPosition = 99;
+    private boolean isClicked = false;
 
     public boolean isClicked() {
         return isClicked;

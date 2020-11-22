@@ -10,4 +10,90 @@
         <item name="android:layout_marginTop">26dp</item>
         <item name="android:layout_marginStart">24dp</item>
     </style>
+
+    <style name="btn1_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxLines">3</item>
+        <item name="android:background">@drawable/btn_custom_bg</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="buttons_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:maxLines">3</item>
+        <item name="android:background">@drawable/btn_custom_bg</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="category_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="parameters_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="stroke_style">
+        <item name="android:layout_width">10dp</item>
+        <item name="android:layout_height">18dp</item>
+        <item name="android:layout_marginEnd">22dp</item>
+        <item name="android:background">@drawable/ic_stroke</item>
+    </style>
+
+    <style name="settings_tvs_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">23dp</item>
+        <item name="android:textColor">#333333</item>
+    </style>
+
+    <style name="spinner_cv_style">
+        <item name="android:layout_width">240dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <style name="home_tvs_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:textColor">#A9A9A9</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="result_tvs_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="result_category_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="item_btn_text_pressed_true">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="item_btn_text_pressed_false">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#6979F8</item>
+    </style>
 </resources>

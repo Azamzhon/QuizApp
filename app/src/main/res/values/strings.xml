@@ -8,7 +8,7 @@
     <string name="start">Start</string>
     <string name="plus">+</string>
     <string name="minus">-</string>
-    <string name="history_category">Category:</string>
+    <string name="_category">Category:</string>
     <string name="mixed">Mixed</string>
     <string name="history">History</string>
     <string name="question_type_title">Football</string>
@@ -17,9 +17,19 @@
     <string name="version">v 1.0.0</string>
     <string name="settings_title">Settings</string>
     <string name="result">Result</string>
+    <string name="correct_answers">Correct answers:</string>
+    <string name="_8_10">8/10</string>
+    <string name="_difficulty">Difficulty:</string>
+    <string name="all">All</string>
+    <string name="the_date">12 may 2019 20:32</string>
+    <string name="share_this_app">Share this app</string>
+    <string name="rate_us">Rate us</string>
+    <string name="leave_feedback">Leave feedback</string>
+    <string name="clear_history">Clear history</string>
+    <string name="_result">Result:</string>
+    <string name="finish">Finish</string>
 
     <string-array name="spinner_category_example">
-        <item>All</item>
         <item>Easy</item>
         <item>Medium</item>
         <item>Hard</item>

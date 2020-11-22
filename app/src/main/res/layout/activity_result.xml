@@ -7,6 +7,10 @@
         <variable
             name="result"
             type="com.azamzhon.data.models.QuizResult" />
+        
+        <variable
+            name="viewModel"
+            type="com.azamzhon.ui.result.ResultViewModel" />
 
     </data>
 
@@ -56,84 +60,68 @@
 
                 <TextView
                     android:id="@+id/text_view_cat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/result_category_style"
+                    android:text="@string/_category"
                     android:layout_marginTop="24dp"
-                    android:layout_marginEnd="130dp"
-                    android:text="Category:"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="40dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/text_view_var"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/result_category_style"
+                    android:layout_width="0dp"
                     android:text="@{result.category}"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp"
+                    android:layout_marginEnd="40dp"
                     app:layout_constraintStart_toEndOf="@id/text_view_cat"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/text_view_cat" />
 
                 <TextView
                     android:id="@+id/text_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Difficulty:"
-                    android:textSize="12sp"
+                    style="@style/result_tvs_style"
+                    android:text="@string/_difficulty"
                     app:layout_constraintEnd_toStartOf="@id/text_2"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/text_2" />
 
                 <TextView
                     android:id="@+id/text_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/result_tvs_style"
                     android:layout_marginTop="90dp"
-                    android:text="Correct answers:"
-                    android:textSize="12sp"
+                    android:text="@string/correct_answers"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/text_3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Difficulty:"
-                    android:textSize="12sp"
+                    style="@style/result_tvs_style"
+                    android:text="@string/_result"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/text_2"
                     app:layout_constraintTop_toTopOf="@id/text_2" />
 
                 <TextView
                     android:id="@+id/text_4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/result_tvs_style"
                     android:text="@{result.difficulty}"
-                    android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="@id/text_1"
                     app:layout_constraintStart_toStartOf="@id/text_1"
                     app:layout_constraintTop_toTopOf="@id/text_5" />
 
                 <TextView
                     android:id="@+id/text_5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/result_tvs_style"
                     android:text="@{String.valueOf(result.correctAnswers) + '/' + String.valueOf(result.size)}"
-                    android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/text_2" />
 
                 <TextView
                     android:id="@+id/text_6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="80%"
-                    android:textSize="12sp"
+                    style="@style/result_tvs_style"
+                    android:text="@{viewModel.percentF}"
                     app:layout_constraintEnd_toEndOf="@id/text_3"
                     app:layout_constraintStart_toStartOf="@id/text_3"
                     app:layout_constraintTop_toTopOf="@id/text_5" />
@@ -148,7 +136,7 @@
             android:layout_height="40dp"
             android:layout_marginBottom="124dp"
             android:background="@drawable/ic_finish_back"
-            android:text="Finish"
+            android:text="@string/finish"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
             android:textStyle="bold"

@@ -8,21 +8,20 @@ import androidx.lifecycle.ViewModel;
 
 import com.azamzhon.App;
 import com.azamzhon.data.models.QuestionModel;
-import com.azamzhon.data.models.QuizResult;
 import com.azamzhon.data.network.IQuizApiClient;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class QuestionViewModel extends ViewModel {
 
     public MutableLiveData<ArrayList<QuestionModel>> questionLiveData = new MutableLiveData<>();
-    public MutableLiveData<Integer> currentQuestionPosition = new MutableLiveData<>();
-    public MutableLiveData<QuizResult> isLast = new MutableLiveData<>();
+    public MutableLiveData<Integer> correctQuestionPosition = new MutableLiveData<>();
+    public MutableLiveData<Integer> isLast = new MutableLiveData<>();
     public ObservableField<Boolean> isLoading = new ObservableField<>();
 
     public ArrayList<String> categories = new ArrayList<>();
     public ArrayList<QuestionModel> mQuestion;
+    private int correctAnswer = 0;
 
 
     public void getQuestions(int amount,int id,String difficulty){
@@ -37,7 +36,7 @@ public class QuestionViewModel extends ViewModel {
                 Log.d("response", mQuestion.get(0).getIncorrectAnswers().size() + "got");
                 questionLiveData.setValue(mQuestion);
                 isLoading.set(false);
-                currentQuestionPosition.setValue(0);
+                correctQuestionPosition.setValue(0);
             }
 
             @Override
@@ -48,35 +47,30 @@ public class QuestionViewModel extends ViewModel {
         },amount,id,difficulty);
     }
 
-    public void moveToQuestionFinish(int position,long createdAT){
-        if (position == mQuestion.size() - 1){
-            finish(position,createdAT);
-        }else {
-            currentQuestionPosition.setValue(position);
+    public void moveToQuestionFinish(int position, long createdAT) {
+        if (position == mQuestion.size() - 1) {
+            finish();
+        } else {
+            correctQuestionPosition.setValue(position);
         }
     }
 
-    void finish(int position,long createdAt){
-        QuestionModel question = mQuestion.get(position);
-        QuizResult quizResult = new QuizResult(question.getCategory(),
-                question.getDifficulty(),
-                5,
-                new Date(createdAt),
-                mQuestion.size());
-        isLast.setValue(quizResult);
+    void finish() {
+        isLast.setValue(correctAnswer);
     }
 
-    void skip(int questionPosition){
-        if (questionPosition == mQuestion.size() - 1){
+    void skip(int questionPosition) {
+        if (questionPosition == mQuestion.size() - 1) {
             return;
-        }else{
+        } else {
             mQuestion.get(questionPosition).setClicked(true);
             questionLiveData.setValue(mQuestion);
+            finish();
         }
     }
 
     public void onAnswerClick(int questionPosition,int answerPosition){
-        if (currentQuestionPosition.getValue() == null || mQuestion == null){
+        if (correctQuestionPosition.getValue() == null || mQuestion == null){
             return;
         }
 
@@ -84,10 +78,14 @@ public class QuestionViewModel extends ViewModel {
 
         question.setSelectQuestionPosition(answerPosition);
 
-        mQuestion.set(questionPosition,question);
+        mQuestion.set(questionPosition, question);
 
         mQuestion.get(questionPosition).setClicked(true);
 
         questionLiveData.setValue(mQuestion);
+
+        if (question.getIncorrectAnswers().get(answerPosition).equals(question.getCorrectAnswer())) {
+            correctAnswer++;
+        }
     }
 }

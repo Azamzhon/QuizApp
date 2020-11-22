@@ -3,7 +3,9 @@ package com.azamzhon.ui.question;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +21,7 @@ import com.azamzhon.databinding.ActivityQuestionBinding;
 import com.azamzhon.ui.customs.CustomLinearLayoutManager;
 import com.azamzhon.ui.main.home.HomeFragment;
 import com.azamzhon.ui.result.ResultActivity;
+import com.google.gson.Gson;
 
 public class QuestionActivity extends AppCompatActivity implements OnAnswerClickListener, View.OnClickListener {
 
@@ -28,10 +31,7 @@ public class QuestionActivity extends AppCompatActivity implements OnAnswerClick
     private int clickedPosition;
     private int position;
 
-    public static final String RESULT_CATEGORY = "result_category";
-    public static final String RESULT_DIFFICULTY = "result_difficulty";
     public static final String CORRECT_ANSWERS = "correct_answers";
-    public static final String CREATED_AT = "created_at";
     public static final String QUESTIONS = "questions";
 
     @Override
@@ -43,9 +43,7 @@ public class QuestionActivity extends AppCompatActivity implements OnAnswerClick
         initRecyclerView();
 
         getQuestions();
-
         lastQuestion();
-
         setupListeners();
     }
 
@@ -64,11 +62,11 @@ public class QuestionActivity extends AppCompatActivity implements OnAnswerClick
                 super.onScrolled(recyclerView, dx, dy);
 
                 CustomLinearLayoutManager linearLayoutManager = (CustomLinearLayoutManager) recyclerView.getLayoutManager();
+                if (linearLayoutManager != null)
                 position = linearLayoutManager.findFirstVisibleItemPosition();
                 binding.setPosition(position + 1);
                 binding.progressTv.setText((position + 1) + "/" + questionViewModel.mQuestion.size());
                 binding.categoryTitle.setText(questionViewModel.categories.get(position));
-
             }
         });
     }
@@ -98,13 +96,10 @@ public class QuestionActivity extends AppCompatActivity implements OnAnswerClick
     }
 
     private void lastQuestion() {
-        questionViewModel.isLast.observe(this, quizResult -> {
+        questionViewModel.isLast.observe(this, correctAnswer -> {
             Intent intent = new Intent(QuestionActivity.this, ResultActivity.class);
-            intent.putExtra(RESULT_CATEGORY,quizResult.getCategory());
-            intent.putExtra(RESULT_DIFFICULTY,quizResult.getDifficulty());
-            intent.putExtra(CORRECT_ANSWERS,quizResult.getCorrectAnswers());
-            intent.putExtra(CREATED_AT,quizResult.getCreatedAt());
-            intent.putExtra(QUESTIONS,quizResult.getSize());
+            intent.putExtra(CORRECT_ANSWERS, correctAnswer);
+            intent.putExtra(QUESTIONS, new Gson().toJson(questionViewModel.mQuestion));
             startActivity(intent);
         });
     }
@@ -113,8 +108,16 @@ public class QuestionActivity extends AppCompatActivity implements OnAnswerClick
     public void onClick(int position, int answerPosition) {
         binding.questionRecyclerview.scrollToPosition(position + 1);
         clickedPosition = position;
+
         questionViewModel.onAnswerClick(position,answerPosition);
         questionViewModel.moveToQuestionFinish(position,System.currentTimeMillis());
+
+        questionViewModel.mQuestion.get(position).setSelectQuestionPosition(answerPosition);
+        questionViewModel.mQuestion.get(position).setClicked(true);
+
+        adapter.notifyDataSetChanged();
+
+        Toast.makeText(getApplicationContext(), "onClick:\nposition = " + position + "\nanswerPosition = " + answerPosition, Toast.LENGTH_SHORT).show();
     }
 
     @Override
